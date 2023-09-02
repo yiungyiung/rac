@@ -8,8 +8,8 @@ namespace SimpleInputNamespace
 	{
 		public enum MovementAxes { XandY, X, Y };
 
-		public SimpleInput.AxisInput xAxis = new SimpleInput.AxisInput( "Mouse X" );
-		public SimpleInput.AxisInput yAxis = new SimpleInput.AxisInput( "Mouse Y" );
+		public SimpleInput.AxisInput xAxis = new SimpleInput.AxisInput( "Horizontal" );
+		public SimpleInput.AxisInput yAxis = new SimpleInput.AxisInput( "Vertical" );
 
 		private RectTransform joystickTR;
 		private Graphic background;

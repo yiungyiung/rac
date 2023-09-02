@@ -1,10 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class VehiclePhysics : MonoBehaviour
+public class VehiclePhysics : NetworkBehaviour
 {
     Rigidbody body;
 
@@ -67,8 +68,12 @@ public class VehiclePhysics : MonoBehaviour
     [Header("Center of mass")]
     public Transform COM;
 
+    public override void OnStartLocalPlayer()
+     {  
+         Camera.main.GetComponent<CameraFollow>().setTarget(gameObject);
+      }
     private void Start()
-    {
+    {   if(!isLocalPlayer){return;}
         body= GetComponent<Rigidbody>();
     }
 
@@ -98,8 +103,9 @@ public class VehiclePhysics : MonoBehaviour
     {
         currentGear = 1;
     }
+
     void FixedUpdate()
-    {
+    {   if(!isLocalPlayer){return;}
         //update the center of mass
         if (COM != null)
         {

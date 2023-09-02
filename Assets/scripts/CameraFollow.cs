@@ -32,6 +32,8 @@ public class CameraFollow : MonoBehaviour
         //something cool
 
         //get jerk
+        if(target!=null)
+        {
         Vector3 jerk = car.jerk;
 
         //get the gforces
@@ -47,7 +49,13 @@ public class CameraFollow : MonoBehaviour
 
         cam.fieldOfView =Mathf.Lerp(cam.fieldOfView, baseFOV + fovMultiplier * forwardGForces,Time.deltaTime * 10);
 
-
+        }
 
     }
+    public void setTarget(GameObject targett)
+     {
+         target = targett.transform;
+         car=target.GetComponent<VehiclePhysics>();
+
+     }
 }

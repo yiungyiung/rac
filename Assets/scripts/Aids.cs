@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Mirror;
 [RequireComponent(typeof(VehiclePhysics))]
-public class Aids : MonoBehaviour
-{
+public class Aids : NetworkBehaviour
+{   
+   [SerializeField]
    VehiclePhysics car;
 
     //Wheels of the car Front left, front right, back left, back right
@@ -44,18 +45,13 @@ public class Aids : MonoBehaviour
 
     [Tooltip("Higher the value, lesser the drift.")]
     public float driftFactor = 1.0f;
-
-    private void Start()
-    {
-        car = GetComponent<VehiclePhysics>();
-    }
     void FixedUpdate()
     {
-
+        if(!isLocalPlayer){return;}
         //Take raw inputs from the user. Brake to reverse switching also done here
-        float rawThrottleInput = Mathf.Clamp01((isReverse?-1:1)* Input.GetAxis("Vertical"));
-        float rawSteerInput = Input.GetAxis("Horizontal");
-        float rawBrakeInput =Mathf.Clamp01((isReverse ? -1 : 1) * -Input.GetAxis("Vertical"));
+        float rawThrottleInput = Mathf.Clamp01((isReverse?-1:1)* SimpleInput.GetAxis("Vertical"));
+        float rawSteerInput = SimpleInput.GetAxis("Horizontal");
+        float rawBrakeInput =Mathf.Clamp01((isReverse ? -1 : 1) * -SimpleInput.GetAxis("Vertical"));
 
         //Speed in meters per second
         float speed = car.GetComponent<Rigidbody>().velocity.magnitude;

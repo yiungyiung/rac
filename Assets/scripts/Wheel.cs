@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Mirror;
 
 //This component is responsible for visual and aural effects including
 //1. Mesh Rotation
@@ -9,21 +9,25 @@ using UnityEngine;
 //3. Skid angle etc calculation
 
 [RequireComponent(typeof (WheelCollider))]
-public class Wheel : MonoBehaviour
-{
+public class Wheel : NetworkBehaviour
+{   
+    [SerializeField]
     public Rigidbody body;
+    [SerializeField]
+
     public WheelCollider col;
     public float slipAngle;
     public Transform wheelMesh;
     public Vector3 meshOffset;
     public float ForwardSlip;
     private void Start()
-    {
+    {   
+        if(!isLocalPlayer){return;}
         body = GetComponentInParent<Rigidbody>();
         col = GetComponent<WheelCollider>();
     }
     void FixedUpdate()
-    {
+    {   if(!isLocalPlayer){return;}
         col.ConfigureVehicleSubsteps(1, 50, 50);
         col.GetWorldPose(out Vector3 pos, out Quaternion rot);
 
