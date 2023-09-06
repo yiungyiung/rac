@@ -1529,7 +1529,7 @@ MonoBehaviour:
   - 2
   - 1.5
   - 1
-  maxTorque: 500
+  maxTorque: 800
   EngineSmoothness: 10
   EngineRPM: 0
   IdleRPM: 1000
