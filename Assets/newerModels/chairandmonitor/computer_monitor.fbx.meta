@@ -23,12 +23,12 @@ ModelImporter:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Monitor_01_A_baseColor
-    second: {fileID: 2800000, guid: 37d767cc27123b84fb7435b620395671, type: 3}
+    second: {fileID: 2800000, guid: fa741e493b1b79c46bf13ea170e24b48, type: 3}
   - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: Monitor_01_A_emissive
-    second: {fileID: 2800000, guid: 95d868fdf062ac4488d47f88e7a1b716, type: 3}
+    second: {fileID: 2800000, guid: 5553f674c6d222640a8074bc2cdd3e6f, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -60,7 +60,7 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 3
+    meshCompression: 2
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
