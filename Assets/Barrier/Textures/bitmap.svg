@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="511.89999"
+   height="256.00027"
+   viewBox="0 0 135.4402 67.733406"
+   version="1.1"
+   id="svg1"
+   inkscape:export-filename="emission.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:export-bgcolor="#0000001c" />
+  <defs
+     id="defs1">
+    <linearGradient
+       id="linearGradient2"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="0"
+         id="stop2" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0.53739613"
+         id="stop3" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient2"
+       id="linearGradient3"
+       x1="38.684536"
+       y1="33.864796"
+       x2="96.924515"
+       y2="33.864796"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(2.6702881e-5)">
+    <path
+       style="fill:none;stroke:url(#linearGradient3);stroke-width:5.29167;stroke-dasharray:none;stroke-opacity:1"
+       d="M 39.693892,13.225738 89.958544,33.858282 39.689722,54.50405"
+       id="path1" />
+    <rect
+       style="fill:none;stroke:#f9f9f9;stroke-width:67.5899;stroke-dasharray:none;stroke-opacity:1"
+       id="rect3"
+       width="67.850311"
+       height="0.14350468"
+       x="33.794922"
+       y="33.794949" />
+  </g>
+</svg>
