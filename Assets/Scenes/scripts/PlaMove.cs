@@ -17,7 +17,7 @@ public class PlaMove : MonoBehaviour
     {
         x=SimpleInput.GetAxis("Horizontal");
         y=SimpleInput.GetAxis("Vertical");
-        Vector3 mov = -transform.right*x + -transform.forward*y;
+        Vector3 mov = transform.right*x + transform.forward*y;
         chari.Move(mov*speed);
 
     }

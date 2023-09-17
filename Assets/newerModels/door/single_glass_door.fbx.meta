@@ -8,17 +8,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: frame
-    second: {fileID: 2100000, guid: ac35ba9edc345bf4997e0c4455ba9bee, type: 2}
+    second: {fileID: 2100000, guid: bbf1506a205126a4fbd841f43f5fccf1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: glass texture
-    second: {fileID: 2100000, guid: 527becaa7ed07a54e862ec0b30ee96d7, type: 2}
+    second: {fileID: 2100000, guid: bbf1506a205126a4fbd841f43f5fccf1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: knob
-    second: {fileID: 2100000, guid: 29b2140c18e60d44794246fd4d7cb9be, type: 2}
+    second: {fileID: 2100000, guid: d222d21b05f3c2d4bb9df03a22fcbc5c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 5380666046608296716}
   m_Layer: 0
   m_Name: Chev666
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 5339803543684296154}
   m_Layer: 0
   m_Name: Tire_LR
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -686,7 +686,7 @@ GameObject:
   - component: {fileID: 5339638116116747396}
   m_Layer: 0
   m_Name: Tire_LF
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -852,7 +852,7 @@ GameObject:
   - component: {fileID: 5339679841482959032}
   m_Layer: 0
   m_Name: Tire_RR
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1019,7 +1019,7 @@ GameObject:
   - component: {fileID: 5339747729519099432}
   m_Layer: 0
   m_Name: Tire_RF
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1273,7 +1273,7 @@ GameObject:
   - component: {fileID: 5354380119439166601}
   m_Layer: 0
   m_Name: COM
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1303,7 +1303,7 @@ GameObject:
   - component: {fileID: 5354380119489025540}
   m_Layer: 0
   m_Name: Target
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1335,7 +1335,7 @@ GameObject:
   - component: {fileID: 5354380119503140658}
   m_Layer: 0
   m_Name: BLCol
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1417,7 +1417,7 @@ GameObject:
   - component: {fileID: 5354380119983259179}
   m_Layer: 0
   m_Name: Audio
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1455,7 +1455,7 @@ GameObject:
   - component: {fileID: -4668349741790005867}
   m_Layer: 0
   m_Name: Car 1
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1493,7 +1493,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855708719e7e0ae4692eaf2a96254dc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshold: -50
+  ground:
+    serializedVersion: 2
+    m_Bits: 0
+  raycastDistance: 10
 --- !u!54 &5354380120055446745
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1534,7 +1537,7 @@ MonoBehaviour:
   FRSlipAngle: 0
   FLSlipAngle: 0
   engineSound: {fileID: 5354380120737074556}
-  pitchX: 0.0002
+  pitchX: 0
   currentGear: 1
   finalGearRatio: 3
   gearRatios:
@@ -1544,7 +1547,7 @@ MonoBehaviour:
   - 2
   - 1.5
   - 1
-  maxTorque: 800
+  maxTorque: 2000
   EngineSmoothness: 10
   EngineRPM: 0
   IdleRPM: 1000
@@ -1684,7 +1687,7 @@ GameObject:
   - component: {fileID: 5354380120208194115}
   m_Layer: 0
   m_Name: BRCol
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1767,7 +1770,7 @@ GameObject:
   - component: {fileID: 5354380120737074556}
   m_Layer: 0
   m_Name: AudioSource
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1895,6 +1898,7 @@ GameObject:
   - component: {fileID: 5354380120853602616}
   - component: {fileID: 5354380120853602617}
   - component: {fileID: 6308831012993308082}
+  - component: {fileID: 1564272861321090023}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Player
@@ -1991,6 +1995,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trails: {fileID: 8539775015531980231}
+--- !u!114 &1564272861321090023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5354380120853602623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2cd5cac7a7f5c543b83f6e3a4a4e30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  halfLapTriggerPassed: 0
+  fullLapTriggerPassed: 0
+  LapCounter: {fileID: 0}
+  LapTimer: {fileID: 0}
+  gameManager: {fileID: 0}
 --- !u!1 &5354380120974816560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2002,7 +2026,7 @@ GameObject:
   - component: {fileID: 5354380120974816563}
   m_Layer: 0
   m_Name: Colliders
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2033,7 +2057,7 @@ GameObject:
   - component: {fileID: 5354380121114936094}
   m_Layer: 0
   m_Name: Wheelcolliders
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2069,7 +2093,7 @@ GameObject:
   - component: {fileID: 5354380121200958284}
   m_Layer: 0
   m_Name: FLCol
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2153,7 +2177,7 @@ GameObject:
   - component: {fileID: 5354380121243281202}
   m_Layer: 0
   m_Name: FRCol
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

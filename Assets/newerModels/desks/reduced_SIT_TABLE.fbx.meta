@@ -7,13 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material
-    second: {fileID: 2100000, guid: 6cade79619aae9b4eaaf59b60eb00db9, type: 2}
+      name: pipe
+    second: {fileID: 2100000, guid: 7cc1ddf2d4f705d439f9dc1b7a0f7ef1, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: black
-    second: {fileID: 2100000, guid: 1ccae63efb4960f429f6ee8f0b88564a, type: 2}
+      name: tabletop
+    second: {fileID: 2100000, guid: 77d76041b60f3c945a5ad2763e1f3e97, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: woodentexture
+    second: {fileID: 2800000, guid: eb505bc6c07ecaa42a2bd40a53fbe116, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -45,7 +50,7 @@ ModelImporter:
   meshes:
     lODScreenPercentages: []
     globalScale: 1
-    meshCompression: 3
+    meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
