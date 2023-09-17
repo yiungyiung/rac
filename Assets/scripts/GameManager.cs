@@ -6,6 +6,13 @@ public class GameManager : NetworkBehaviour
 {
     [SyncVar]
     public float timer;
+    public TMP_Text Position;
+    public int dispPosition=0;
+    [SyncVar]
+    public int finishPosition = 0;
+
+private bool hasUpdated = false;
+    
 
     public TMP_Text Text; // Reference to your TextMeshProUGUI component
 
@@ -23,11 +30,20 @@ public class GameManager : NetworkBehaviour
         {
             timer += Time.deltaTime;
             RpcUpdateTimer(timer);
-            VehiclePhysics[] allCars = FindObjectsOfType<VehiclePhysics>();
-            Debug.Log("Number of cars in the scene: " + allCars.Length);
         }
     }
 
+    [Command(requiresAuthority = false)]
+    public void Cmdposupdate(NetworkConnectionToClient sender = null)
+    {
+        finishPosition=finishPosition+1;
+        Rpcupdatepos(finishPosition);
+    }
+    
+    [ClientRpc]
+    public void Rpcupdatepos(int pos){
+        finishPosition=pos;
+    }
     [ClientRpc]
     void RpcUpdateTimer(float newTime)
     {
@@ -35,6 +51,10 @@ public class GameManager : NetworkBehaviour
         Text.text = timer.ToString("0.00"); // Update the TextMeshProUGUI text
     }
 
+    public int GetLap()
+    {
+        return dispPosition;
+    }
     public float GetTime()
     {
         return timer;
