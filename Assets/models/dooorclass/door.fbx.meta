@@ -45,6 +45,36 @@ ModelImporter:
       name: Material.009
     second: {fileID: 2100000, guid: 1008b57244127824a8f4387439264854, type: 2}
   - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.011
+    second: {fileID: 2100000, guid: 75e303141f12a42d0a465571e94054ca, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.012
+    second: {fileID: 2100000, guid: 5560705d28aa94bea99d920b68091dd3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: handle
+    second: {fileID: 2100000, guid: d3c4b54ba9d6d47f7a57bb7c5df025af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: handle.001
+    second: {fileID: 2100000, guid: 3795b319687db4646bcb11cac899384c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: handle.002
+    second: {fileID: 2100000, guid: 93bbc4e7f137b4d38b5b2a0d5add5152, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: handle.003
+    second: {fileID: 2100000, guid: d5487122d905242929e652c39fc9806d, type: 2}
+  - first:
       type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
       name: black
