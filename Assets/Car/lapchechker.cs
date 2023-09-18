@@ -19,7 +19,7 @@ public Type type;
             {
                 other.gameObject.GetComponent<PlayerLapTracker>().halfLapTriggerPassed =true;
             }
-            else if(type==Type.full && other.gameObject.GetComponent<PlayerLapTracker>().halfLapTriggerPassed)
+            else if(type==Type.full && other.gameObject.GetComponent<PlayerLapTracker>().halfLapTriggerPassed==true)
             {
                 other.gameObject.GetComponent<PlayerLapTracker>().fullLapTriggerPassed=true;
             }
