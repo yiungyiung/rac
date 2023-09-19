@@ -38,8 +38,45 @@ public class Barrier : MonoBehaviour
         Mesh mesh = new Mesh();
         mf.mesh = mesh;
         var ren = gameObject.AddComponent<MeshRenderer>();
-        ren.material = mat;
-       gameObject.AddComponent<MeshCollider>();
+        mat = ren.material =new Material(mat);
+        MeshCollider col = gameObject.AddComponent<MeshCollider>();
+
+        var verts = GetVerts();
+ 
+        
+        //generate triangles
+        int[] tris = new int[6 * (verts.Length / 2 - 1)];
+        for (int i = 0; i < verts.Length / 2 - 1; i++)
+        {
+            tris[6 * i + 0] = i;
+            tris[6 * i + 1] = i + 1;
+            tris[6 * i + 2] = i + verts.Length / 2;
+            tris[6 * i + 3] = i + 1;
+            tris[6 * i + 4] = i + verts.Length / 2 + 1;
+            tris[6 * i + 5] = i + verts.Length / 2;
+            
+
+        }
+        Vector2[] uvs = new Vector2[verts.Length];
+       
+
+        //set UVs and adjust vertices for position
+        for (int i = 0; i < verts.Length; i++)
+        {
+            uvs[i] = new Vector2(vertDistanceFromStart[i % (verts.Length / 2)] * tiling / height, i < verts.Length / 2 ? 0 : 1);
+            verts[i] = transform.InverseTransformPoint(verts[i]);
+        }
+        mesh.vertices = verts;
+        mesh.triangles = tris;
+        mesh.uv = uvs;
+
+        //update normals
+        mesh.RecalculateTangents();
+        mesh.RecalculateNormals();
+
+        //update mesh collider mesh
+        col.sharedMesh = mesh;
+
     }
 
     private void OnDrawGizmos()
@@ -52,7 +89,7 @@ public class Barrier : MonoBehaviour
             Gizmos.DrawLine(p.pos.position, p.pos.position + p.pos.rotation * Vector3.forward * p.weight);
             Gizmos.DrawLine(p.pos.position, p.pos.position + p.pos.rotation * -Vector3.forward * p.weight);
             Gizmos.color =Color.red;
-            Gizmos.DrawWireSphere(p.pos.position + p.pos.rotation * Vector3.forward * p.weight, 0.1f);
+            Gizmos.DrawWireSphere(p.pos.position + p.pos.rotation * Vector3.forward * p.weight, p.weight * 0.1f);
         }
     }
 
@@ -90,55 +127,15 @@ public class Barrier : MonoBehaviour
             verts[index] = verts[index - verts.Length / 2] + Vector3.up * height;
         }
 
-        foreach (var v in verts)
-        {
-            Debug.Log(v);
-        }
+      
         return verts;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Mesh mesh = GetComponent<MeshFilter>().mesh;
-        MeshCollider col = GetComponent<MeshCollider>();
-        var verts = GetVerts();
-
-       
-
-        Vector2[] uvs = new Vector2[verts.Length];
-        //generate triangles
-        int[] tris = new int[6 * (verts.Length / 2 - 1)];
-        for (int i = 0; i < verts.Length / 2 - 1; i++)
-        {
-            tris[6 * i + 0] = i;
-            tris[6 * i + 1] = i + 1;
-            tris[6 * i + 2] = i + verts.Length / 2;
-            tris[6 * i + 3] = i + 1;
-            tris[6 * i + 4] = i + verts.Length / 2 + 1;
-            tris[6 * i + 5] = i + verts.Length / 2;
-           
-        }
-        mesh.triangles = tris;
-
-        //set UVs and adjust vertices for position
-        for (int i = 0; i < verts.Length; i++)
-        {
-            uvs[i] = new Vector2(offset + vertDistanceFromStart[i%(verts.Length/2)] * tiling / height,i < verts.Length / 2 ? 0 : 1);
-            verts[i] = transform.InverseTransformPoint(verts[i]);
-        }
-        mesh.vertices = verts;
-        mesh.uv = uvs;
-
-        //arrow motion
         offset += Time.deltaTime * -arrowSpeed;
         offset %= vertDistanceFromStart[points.Length - 1];
-
-        //update normals
-        mesh.RecalculateTangents();
-        mesh.RecalculateNormals();
-        
-        //update mesh collider mesh
-        col.sharedMesh = mesh;
+        mat.mainTextureOffset = new Vector2(offset,0);
     }
 }

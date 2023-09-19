@@ -20,6 +20,7 @@ public class Aids : NetworkBehaviour
     //steering sensitivity reduces with increased speed
     public float speedSensitivity = 0.1f;
 
+   
 
     [Header("Gearshift parameters")]
     [Tooltip("RPM at which gear shifts up")]
@@ -45,14 +46,46 @@ public class Aids : NetworkBehaviour
 
     [Tooltip("Higher the value, lesser the drift.")]
     public float driftFactor = 1.0f;
+
+
+    [Header("Rollover Protection")]
+    public float pitchCorrection;
+    public float rollCorrection;
+
+    Transform FindRecursively(Transform parent, String name)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == name && child.gameObject.activeInHierarchy)
+            {
+                return child; // Found the child GameObject
+            }
+
+            Transform result = FindRecursively(child, name);
+            if (result != null)
+            {
+                return result; // Found the child GameObject in the descendant hierarchy
+            }
+        }
+
+        return null; // Child not found
+    }
+
     void FixedUpdate()
     {
         if(!isLocalPlayer){return;}
+
+        if (!FLWheel || !FLWheel.gameObject.activeInHierarchy) FLWheel = FindRecursively(transform, "FLCol").GetComponent<Wheel>();
+        if (!BLWheel || !BLWheel.gameObject.activeInHierarchy) BLWheel = FindRecursively(transform, "BLCol").GetComponent<Wheel>();
+        if (!FRWheel || !FRWheel.gameObject.activeInHierarchy) FRWheel = FindRecursively(transform, "FRCol").GetComponent<Wheel>();
+        if (!BRWheel || !BRWheel.gameObject.activeInHierarchy) BRWheel = FindRecursively(transform, "BRCol").GetComponent<Wheel>();
+
+
         //Take raw inputs from the user. Brake to reverse switching also done here
         float rawThrottleInput = Mathf.Clamp01((isReverse?-1:1)* SimpleInput.GetAxis("Vertical"));
         float rawSteerInput = SimpleInput.GetAxis("Horizontal");
         float rawBrakeInput =Mathf.Clamp01((isReverse ? -1 : 1) * -SimpleInput.GetAxis("Vertical"));
-
+        float handbrakeInput = SimpleInput.GetKey(KeyCode.Space)?1:0;
         //Speed in meters per second
         float speed = car.GetComponent<Rigidbody>().velocity.magnitude;
 
@@ -117,6 +150,15 @@ public class Aids : NetworkBehaviour
         //Final outputs
         car.SteerInput = steerInput;
         car.Throttle = rawThrottleInput;
-        car.brakeInput= rawBrakeInput;
+        car.brakeInput= rawBrakeInput+handbrakeInput;
+        car.handbrakeInput = handbrakeInput;
+
+        //apply forces for roll over correction
+
+        float rollTorque =Vector3.SignedAngle( Vector3.up, car.transform.up,Vector3.ProjectOnPlane( car.transform.forward,Vector3.up)) * rollCorrection;
+        float pitchTorque = Vector3.SignedAngle(Vector3.up, car.transform.up, Vector3.ProjectOnPlane(car.transform.right, Vector3.up)) * pitchCorrection;
+
+
+        car.body.AddRelativeTorque(pitchTorque, 0, rollTorque);
     }
 }

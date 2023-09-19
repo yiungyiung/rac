@@ -7,7 +7,8 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class VehiclePhysics : NetworkBehaviour
 {
-    Rigidbody body;
+    [HideInInspector]
+    public Rigidbody body;
 
     [Header("Wheel Colliders")]
     public WheelCollider FLCol;
@@ -64,6 +65,8 @@ public class VehiclePhysics : NetworkBehaviour
     public float SteerInput;
     [HideInInspector] 
     public float brakeInput;
+    [HideInInspector]
+    public float handbrakeInput;
 
     [Header("Center of mass")]
     public Transform COM;
@@ -73,8 +76,12 @@ public class VehiclePhysics : NetworkBehaviour
          Camera.main.GetComponent<CameraFollow>().setTarget(gameObject);
       }
     private void Start()
-    {   if(!isLocalPlayer){return;}
+    {   if(!isLocalPlayer){
+            engineSound.gameObject.SetActive(false);
+            this.enabled = false;
+            return;}
         body= GetComponent<Rigidbody>();
+       
     }
 
 
@@ -104,8 +111,35 @@ public class VehiclePhysics : NetworkBehaviour
         currentGear = 1;
     }
 
+
+    Transform FindRecursively(Transform parent, String name)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == name && child.gameObject.activeInHierarchy)
+            {
+                return child; // Found the child GameObject
+            }
+
+            Transform result = FindRecursively(child, name);
+            if (result != null)
+            {
+                return result; // Found the child GameObject in the descendant hierarchy
+            }
+        }
+
+        return null; // Child not found
+    }
+
     void FixedUpdate()
     {   if(!isLocalPlayer){return;}
+
+
+        if (!FLCol || !FLCol.gameObject.activeInHierarchy) FLCol = FindRecursively(transform,"FLCol").GetComponent<WheelCollider>();
+        if (!BLCol || !BLCol.gameObject.activeInHierarchy) BLCol = FindRecursively(transform, "BLCol").GetComponent<WheelCollider>();
+        if (!FRCol || !FRCol.gameObject.activeInHierarchy) FRCol = FindRecursively(transform, "FRCol").GetComponent<WheelCollider>();
+        if (!BRCol || !BRCol.gameObject.activeInHierarchy) BRCol = FindRecursively(transform, "BRCol").GetComponent<WheelCollider>();
+
         //update the center of mass
         if (COM != null)
         {
@@ -134,7 +168,7 @@ public class VehiclePhysics : NetworkBehaviour
 
         //current gear ratio
         float currGearRatio = (currentGear == -1 ? -gearRatios[0] : gearRatios[currentGear]);
-
+       
 
         //Calculate engine RPM from wheel speed
         EngineRPM =Mathf.Lerp(EngineRPM, Math.Max(IdleRPM, RearSetRPM * finalGearRatio * currGearRatio), Time.deltaTime * EngineSmoothness);
@@ -153,8 +187,8 @@ public class VehiclePhysics : NetworkBehaviour
         BRCol.motorTorque = rTorque;
 
         //brake.... normal stuff
-        BLCol.brakeTorque = brakeInput * brakeTorque;
-        BRCol.brakeTorque = brakeInput * brakeTorque;
+        BLCol.brakeTorque = Mathf.Clamp01(brakeInput + handbrakeInput) * brakeTorque;
+        BRCol.brakeTorque = Mathf.Clamp01(brakeInput + handbrakeInput) * brakeTorque;
         FLCol.brakeTorque = brakeInput * brakeTorque;
         FRCol.brakeTorque = brakeInput * brakeTorque;
 
