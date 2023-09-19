@@ -8,7 +8,5 @@ public class PowerUPhit : MonoBehaviour
         if(other.gameObject.tag=="Player")
             other.gameObject.GetComponent<carpower>().powerup(0);
             Destroy(gameObject);
-    }
-
-    
+            }
 }

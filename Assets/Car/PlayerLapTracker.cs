@@ -82,6 +82,7 @@ public class PlayerLapTracker : NetworkBehaviour
             Debug.Log("why");
             why=gameManager.GetLap();
             Position.text=gameManager.GetLap().ToString();
+            main.GetComponent<Aids>().enabled = false;
            
         }
         if (halfLapTriggerPassed && fullLapTriggerPassed)

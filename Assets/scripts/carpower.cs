@@ -9,15 +9,15 @@ public class carpower : MonoBehaviour
     public void powerup(int index)
     {
         Debug.Log("Power up"+index);
-        trailon();
+        trails.GetComponent<Aids>().enabled = false;
     }
 
 
     void trailon(){
-        trails.SetActive(true);
+        Debug.Log("srt");
         Invoke("trailoff",10);
     }
     void trailoff(){
-        trails.SetActive(false);
+        Debug.Log("off");
     }
 }
