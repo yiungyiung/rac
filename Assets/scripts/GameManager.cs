@@ -42,7 +42,6 @@ public class GameManager : NetworkBehaviour
     public void Cmdposupdate(uint netid)
     {
         finishPosition = finishPosition + 1;
-        calledid = netid;
         Rpcupdatepos (finishPosition, netid);
     }
 

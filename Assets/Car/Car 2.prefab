@@ -1191,7 +1191,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1291843176558674106
 Transform:
   m_ObjectHideFlags: 0
@@ -2421,7 +2421,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6520259564757194376
 Transform:
   m_ObjectHideFlags: 0
@@ -3980,7 +3980,6 @@ MonoBehaviour:
   DifferentialFactor: 10
   maxDifferentialTorque: 2000
   brakeTorque: 40000
-  handbrakeTorque: 40000
   Throttle: 0
   MaxSteer: 30
   SteerInput: 0
@@ -4132,6 +4131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf31f696a567ad348bd363b1099b6458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 1
+  syncMode: 0
+  syncInterval: 0
   Cars:
   - {fileID: 5162398462019886085}
   - {fileID: 2027177337384312906}
@@ -4465,6 +4467,7 @@ MonoBehaviour:
   fullLapTriggerPassed: 0
   LapCounter: {fileID: 0}
   LapTimer: {fileID: 0}
+  LapTimer2: {fileID: 0}
   Position: {fileID: 0}
   gameManager: {fileID: 0}
   gamestarter: {fileID: 0}

@@ -77,8 +77,8 @@ public class VehiclePhysics : NetworkBehaviour
       }
     private void Start()
     {   if(!isLocalPlayer){
-            engineSound.gameObject.SetActive(false);
-            this.enabled = false;
+            //engineSound.gameObject.SetActive(false);
+            //this.enabled = false;
             return;}
         body= GetComponent<Rigidbody>();
        

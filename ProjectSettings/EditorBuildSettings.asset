@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
+    path: Assets/AndriodMain.unity
+    guid: 55e77b57af64d014fb4345fd8372d350
+  - enabled: 0
     path: Assets/NEWRACE.unity
     guid: 49d504e73e61d2a4ab1d2474a6523d35
+  - enabled: 1
+    path: Assets/NEWRACEyash.unity
+    guid: 19bfc8381051bc84fb1dd8f4924bf596
   m_configObjects: {}
