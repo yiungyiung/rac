@@ -24,6 +24,7 @@ public class PlayerLapTracker : NetworkBehaviour
     [SerializeField]
     public GameManager gameManager;
 
+    public starter gamestarter;
     public GameObject main;
 
     public int why;
@@ -40,6 +41,10 @@ public class PlayerLapTracker : NetworkBehaviour
             GameObject
                 .FindWithTag("GameController")
                 .GetComponent<GameManager>();
+        gamestarter =
+            GameObject
+                .FindWithTag("GameController")
+                .GetComponent<starter>();
         LapCounter =
             GameObject
                 .Find("Canvas/LapCounter")
@@ -50,6 +55,8 @@ public class PlayerLapTracker : NetworkBehaviour
             GameObject.Find("Canvas/Position").GetComponent<TextMeshProUGUI>();
         LapCounter.text = "Lap:1/2";
         LapTimer.text = "Lap 1: ?";
+        gamestarter.Cmdupdatelist(main.GetComponent<NetworkIdentity>().netId);
+
     }
 
     void Update()
@@ -57,6 +64,10 @@ public class PlayerLapTracker : NetworkBehaviour
         if (!isLocalPlayer)
         {
             return;
+        }
+        if(gamestarter.canStart==true)
+        {
+            main.GetComponent<Aids>().enabled = true;
         }
         if(gameManager.GetID()==main.GetComponent<NetworkIdentity>().netId)
         {

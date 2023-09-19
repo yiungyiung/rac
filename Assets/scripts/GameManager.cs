@@ -1,21 +1,26 @@
-using UnityEngine;
-using Mirror;
 using System;
+using Mirror;
 using TMPro;
+using UnityEngine;
 
 public class GameManager : NetworkBehaviour
 {
     [SyncVar]
     public float timer;
+
     public TMP_Text Position;
-    public int dispPosition=0;
+
+    public int dispPosition = 0;
+
     [SyncVar]
     public int finishPosition = 0;
+
     uint calledid;
-private bool hasUpdated = false;
-    
+
+    private bool hasUpdated = false;
 
     public TMP_Text Text; // Reference to your TextMeshProUGUI component
+
     void Start()
     {
         if (isServer)
@@ -29,23 +34,25 @@ private bool hasUpdated = false;
         if (isServer)
         {
             timer += Time.deltaTime;
-            RpcUpdateTimer(timer);
+            RpcUpdateTimer (timer);
         }
     }
 
     [Command(requiresAuthority = false)]
     public void Cmdposupdate(uint netid)
     {
-        finishPosition=finishPosition+1;
-        calledid=netid;
-        Rpcupdatepos(finishPosition,netid);
+        finishPosition = finishPosition + 1;
+        calledid = netid;
+        Rpcupdatepos (finishPosition, netid);
     }
-    
+
     [ClientRpc]
-    public void Rpcupdatepos(int pos,uint netid){
-        finishPosition=pos;
-        calledid=netid; 
+    public void Rpcupdatepos(int pos, uint netid)
+    {
+        finishPosition = pos;
+        calledid = netid;
     }
+
     [ClientRpc]
     void RpcUpdateTimer(float newTime)
     {
@@ -57,10 +64,12 @@ private bool hasUpdated = false;
     {
         return finishPosition;
     }
+
     public uint GetID()
     {
         return calledid;
     }
+
     public float GetTime()
     {
         return timer;
