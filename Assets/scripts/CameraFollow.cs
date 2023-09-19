@@ -15,7 +15,7 @@ public class CameraFollow : MonoBehaviour
     public float fovMultiplier;
     public float baseFOV = 60f;
     public float camStiffness = 10f;
-
+    public float maxAccel;
     public float shakeMultiplier;
     Vector3 finalPosition;
     private void Start()
@@ -37,8 +37,9 @@ public class CameraFollow : MonoBehaviour
         Vector3 jerk = car.jerk;
 
         //get the gforces
-        float forwardGForces = car.gForces.z;
-        float sideGForces = car.gForces.x;
+        Vector3 gForces =Vector3.ClampMagnitude( car.gForces, maxAccel);
+        float forwardGForces = gForces.z;
+        float sideGForces = gForces.x;
         Vector3 basePosition = target.position + target.TransformDirection(offset + forwardGForces * accelSensitivity * Vector3.forward ) + 
                                                 target.TransformDirection(offset + sideSensitivity * sideGForces * Vector3.right);
         
