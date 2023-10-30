@@ -12,12 +12,11 @@ public class PlaMove : MonoBehaviour
     Transform orientation;
 
     
-    float x, y;
+    public float x, y;
     void FixedUpdate()
     {
-        x=SimpleInput.GetAxis("Horizontal");
-        y=SimpleInput.GetAxis("Vertical");
-        Vector3 mov = transform.right*x + transform.forward*y;
+      
+        Vector3 mov = transform.right*x + orientation.forward*y;
         chari.Move(mov*speed);
 
     }
