@@ -15,7 +15,7 @@ public class PlaMove : MonoBehaviour
     public float x, y;
     void FixedUpdate()
     {
-      
+        y=Input.GetAxisRaw("Vertical");
         Vector3 mov = transform.right*x + orientation.forward*y;
         chari.Move(mov*speed);
 
