@@ -5,18 +5,18 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/WifiRot.unity
     guid: 070144d7a2e31b14492792829d69ceab
-  - enabled: 0
+  - enabled: 1
     path: Assets/AndriodMain.unity
     guid: 55e77b57af64d014fb4345fd8372d350
   - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
     path: Assets/NEWRACEyash.unity
     guid: 19bfc8381051bc84fb1dd8f4924bf596
+  - enabled: 0
+    path: Assets/AIML.unity
+    guid: 435d8619f4c2bdb429525cce8040f7e0
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 1f1d89faab73c3b40a8e631f33b0c36d, type: 2}
     xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: abcbc245c9e953b468c124a6021bdafa, type: 2}

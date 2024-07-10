@@ -11,13 +11,16 @@ public class PlaMove : MonoBehaviour
     [SerializeField]
     Transform orientation;
 
-    
     public float x, y;
     void FixedUpdate()
-    {
-        y=Input.GetAxisRaw("Vertical");
-        Vector3 mov = transform.right*x + orientation.forward*y;
-        chari.Move(mov*speed);
+{
+    float x = SimpleInput.GetAxisRaw("Horizontal");
+    float y = SimpleInput.GetAxisRaw("Vertical");
 
-    }
+    Vector3 mov = transform.right * x + orientation.forward * y;
+    mov.y = 0;
+
+    chari.Move(mov * speed );
+}
+
 }
