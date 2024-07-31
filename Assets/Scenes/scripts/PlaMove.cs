@@ -19,7 +19,7 @@ public class PlaMove : MonoBehaviour
 
     Vector3 mov = transform.right * x + orientation.forward * y;
     mov.y = 0;
-
+    transform.position = new Vector3(transform.position.x,43.1f ,transform.position.z);
     chari.Move(mov * speed );
 }
 

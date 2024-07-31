@@ -23,9 +23,9 @@ public class cammovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    float mousex=SimpleInput.GetAxisRaw(m1)*Time.deltaTime*sensx*10;
-     float mousey=SimpleInput.GetAxisRaw(m2)*Time.deltaTime*sensy*10;
-    
+    float mousex=SimpleInput.GetAxisRaw(m1)*Time.deltaTime*sensx*5;
+     float mousey=SimpleInput.GetAxisRaw(m2)*Time.deltaTime*sensy*5;
+    Debug.Log("Mouse"+mousex+" "+mousey);
      xrot-=mousey;
      xrot=Mathf.Clamp(xrot,-90f,90f);
 
