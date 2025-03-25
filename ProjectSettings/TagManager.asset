@@ -9,6 +9,8 @@ TagManager:
   - C
   - D
   - E
+  - NavigateOnly
+  - Navigate
   layers:
   - Default
   - TransparentFX
