@@ -53,7 +53,7 @@ public class Locations : MonoBehaviour
                 Vector3 node1Pos = currentPath[1].transform.position;
                 Vector3 directionToNode0 = Vector3.Normalize(node0Pos - playerPos);
                 Vector3 directionToNode1 = Vector3.Normalize(node1Pos - playerPos);
-                if (Vector3.Dot(directionToNode0, directionToNode1) <= 0.1)
+                if ((Vector3.Dot(directionToNode0, directionToNode1) <= -0.25) && curDist <= 120) // angle is roughly 15 degrees
                 {
                     toRemoveFirst = true;
                 }
