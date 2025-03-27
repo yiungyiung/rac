@@ -16,7 +16,10 @@ public class Locations : MonoBehaviour
     public List<GameObject> navigationNodes = new List<GameObject>();
     public List<GameObject> locationNodes = new List<GameObject>();
     public List<Edge> connectedNodes = new List<Edge>();
+    public List<GameObject> currentPath;
+
     private Dictionary<GameObject, List<(GameObject node, float distance)>> adjacency;
+    private GameObject stripObject;
 
     private void Start()
     {
@@ -24,23 +27,87 @@ public class Locations : MonoBehaviour
         locationNodes.AddRange(locations);
         navigationNodes.AddRange(locations);
         navigationNodes.AddRange(GameObject.FindGameObjectsWithTag("NavigateOnly"));
+        stripObject = new GameObject("BlueStripPolyline");
 
         AddEdges();
         BuildAdjacency();
     }
 
+    private void Update()
+    {
+        if (currentPath != null && currentPath.Count > 0)
+        {
+            GameObject player = GameObject.Find("pla");
+            float curDist = Vector3.Distance(currentPath[0].transform.position, player.transform.position);
+            bool toRemoveFirst = false;
+            if (curDist < 60)
+            {
+                toRemoveFirst = true;
+            }
+
+            if (currentPath.Count >= 2)
+            {
+                // basically, if the first node in the path would make u go the opposite way, we will remove it, beacuse it means you crossed it.
+                Vector3 playerPos = player.transform.position;
+                Vector3 node0Pos = currentPath[0].transform.position;
+                Vector3 node1Pos = currentPath[1].transform.position;
+                Vector3 directionToNode0 = Vector3.Normalize(node0Pos - playerPos);
+                Vector3 directionToNode1 = Vector3.Normalize(node1Pos - playerPos);
+                if (Vector3.Dot(directionToNode0, directionToNode1) <= 0.1)
+                {
+                    toRemoveFirst = true;
+                }
+            }
+
+            if (toRemoveFirst)
+            {
+                currentPath.RemoveAt(0);
+            }
+
+            List<GameObject> pathToDraw = new List<GameObject>(currentPath);
+            pathToDraw.Insert(0, player);
+            CreateBlueStripPolyline(pathToDraw, 20);
+        } else if (stripObject != null)
+        {
+            Destroy(stripObject);
+        }
+    }
+
+    public void TeleportPlayerTo(string src)
+    {
+        GameObject player = GameObject.Find("pla");
+        GameObject toTpTo = GameObject.Find(src);
+        if (toTpTo != null)
+        {
+            Vector3 tpPos = toTpTo.transform.position;
+            player.transform.position = new Vector3(tpPos.x, 44, tpPos.y);
+        }
+    }
+
     public void CreatePath(string src, string dst)
     {
         GameObject startNode = GameObject.Find(src);
+        GameObject player = GameObject.Find("pla");
+
+        if (startNode == null)
+        {
+            float dist = float.MaxValue;
+
+            foreach (GameObject g in navigationNodes)
+            {
+                float newDist = Vector3.Distance(g.transform.position, player.transform.position);
+                if (newDist < dist) {
+                    startNode = g;
+                    dist = newDist;
+                }
+                Debug.Log(newDist + ", " + g);
+            }
+        }
         GameObject endNode = GameObject.Find(dst);
 
-        List<GameObject> path = FindShortestPath(startNode, endNode);
+        currentPath = FindShortestPath(startNode, endNode);
 
-        if (path != null)
-        {
-            CreateBlueStripPolyline(path, 30);
-        }
-        else
+        if (currentPath == null)
         {
             Debug.Log("No path found.");
         }
@@ -160,7 +227,6 @@ public class Locations : MonoBehaviour
     {
         if (points == null || points.Count < 2)
         {
-            Debug.LogError("Need at least two points to create a strip.");
             return;
         }
 
@@ -172,27 +238,42 @@ public class Locations : MonoBehaviour
 
         for (int i = 0; i < points.Count; i++)
         {
+            Vector3 p0 = new Vector3(), p2 = new Vector3();
+            if (i != 0)
+            {
+                p0 = points[i - 1].transform.position;
+                p0 = new Vector3(p0.x, 0, p0.z);
+            }
+            if (i != points.Count - 1)
+            {
+                p2 = points[i + 1].transform.position;
+                p2 = new Vector3(p2.x, 0, p2.z);
+            }
+
+            Vector3 p1 = points[i].transform.position;
+            p1 = new Vector3(p1.x, 0, p1.z);
+
             Vector3 dir;
             if (i == 0)
             {
-                dir = (points[i + 1].transform.position - points[i].transform.position).normalized;
+                dir = (p2 - p1).normalized;
             }
             else if (i == points.Count - 1)
             {
-                dir = (points[i].transform.position - points[i - 1].transform.position).normalized;
+                dir = (p1 - p0).normalized;
             }
             else
             {
-                Vector3 dirPrev = (points[i].transform.position - points[i - 1].transform.position).normalized;
-                Vector3 dirNext = (points[i + 1].transform.position - points[i].transform.position).normalized;
+                Vector3 dirPrev = (p1 - p0).normalized;
+                Vector3 dirNext = (p2 - p1).normalized;
                 dir = (dirPrev + dirNext).normalized;
                 if (dir == Vector3.zero)
                     dir = dirPrev;
             }
 
             Vector3 perp = Vector3.Cross(dir, Vector3.up).normalized;
-            vertices.Add(points[i].transform.position - perp * halfWidth + new Vector3(0, 10, 0));
-            vertices.Add(points[i].transform.position + perp * halfWidth + new Vector3(0, 10, 0));
+            vertices.Add(p1 - perp * halfWidth + new Vector3(0, 10, 0));
+            vertices.Add(p1 + perp * halfWidth + new Vector3(0, 10, 0));
 
             float uCoord = (float)i / (points.Count - 1);
             uvs.Add(new Vector2(uCoord, 0));
@@ -218,7 +299,8 @@ public class Locations : MonoBehaviour
         mesh.uv = uvs.ToArray();
         mesh.RecalculateNormals();
 
-        GameObject stripObject = new GameObject("BlueStripPolyline");
+        Destroy(stripObject);
+        stripObject = new GameObject("BlueStripPolyline");
         stripObject.transform.SetParent(transform, false);
 
         MeshFilter mf = stripObject.AddComponent<MeshFilter>();

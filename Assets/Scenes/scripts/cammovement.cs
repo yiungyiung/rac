@@ -25,7 +25,6 @@ public class cammovement : MonoBehaviour
     {
     float mousex=SimpleInput.GetAxisRaw(m1)*Time.deltaTime*sensx*5;
      float mousey=SimpleInput.GetAxisRaw(m2)*Time.deltaTime*sensy*5;
-    Debug.Log("Mouse"+mousex+" "+mousey);
      xrot-=mousey;
      xrot=Mathf.Clamp(xrot,-90f,90f);
 

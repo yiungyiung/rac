@@ -280749,6 +280749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navigationNodes: []
   locationNodes: []
+  currentPath: []
 --- !u!4 &937043486
 Transform:
   m_ObjectHideFlags: 0
@@ -369218,7 +369219,9 @@ MonoBehaviour:
   m_ItemImage: {fileID: 0}
   m_Value: 0
   m_Options:
-    m_Options: []
+    m_Options:
+    - m_Text: 
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:

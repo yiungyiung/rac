@@ -13,11 +13,18 @@ public class LoadLocationList : MonoBehaviour
     public GameObject srcDropDownObj;
     public GameObject dstDropDownObj;
 
+    private string lastSrc = "";
+
 
     void Start()
     {
         locations = GameObject.FindGameObjectsWithTag("Navigate");
         locationsTexts = new List<string>();
+
+        if (gameObject.name == "Source")
+        {
+            locationsTexts.Add("Player Location");
+        }
 
         foreach (GameObject g in locations)
         {
@@ -44,5 +51,11 @@ public class LoadLocationList : MonoBehaviour
         string src = srcDropDownObj.GetComponent<LoadLocationList>().GetCurrentSelected();
         string dst = dstDropDownObj.GetComponent<LoadLocationList>().GetCurrentSelected();
         locationsObj.GetComponent<Locations>().CreatePath(src, dst);
+
+        if (lastSrc != src)
+        {
+            locationsObj.GetComponent<Locations>().TeleportPlayerTo(src);
+            lastSrc = src;
+        }
     }
 }
