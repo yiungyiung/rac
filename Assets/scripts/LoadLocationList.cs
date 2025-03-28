@@ -36,11 +36,6 @@ public class LoadLocationList : MonoBehaviour
         mText.AddOptions(locationsTexts);
     }
 
-    void Update()
-    {
-        
-    }
-
     public string GetCurrentSelected()
     {
         return locationsTexts[mText.value];

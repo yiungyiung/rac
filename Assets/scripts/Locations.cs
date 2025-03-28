@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Locations : MonoBehaviour
 {
@@ -35,8 +36,11 @@ public class Locations : MonoBehaviour
 
     private void Update()
     {
+        RawImage arrowRawImage = GameObject.Find("NavArrowRenderedImage").GetComponent<RawImage>();
         if (currentPath != null && currentPath.Count > 0)
         {
+            arrowRawImage.enabled = true;
+
             GameObject player = GameObject.Find("pla");
             float curDist = Vector3.Distance(currentPath[0].transform.position, player.transform.position);
             bool toRemoveFirst = false;
@@ -53,7 +57,7 @@ public class Locations : MonoBehaviour
                 Vector3 node1Pos = currentPath[1].transform.position;
                 Vector3 directionToNode0 = Vector3.Normalize(node0Pos - playerPos);
                 Vector3 directionToNode1 = Vector3.Normalize(node1Pos - playerPos);
-                if ((Vector3.Dot(directionToNode0, directionToNode1) <= -0.25) && curDist <= 120) // angle is roughly 15 degrees
+                if ((Vector3.Dot(directionToNode0, directionToNode1) <= 0))
                 {
                     toRemoveFirst = true;
                 }
@@ -69,6 +73,7 @@ public class Locations : MonoBehaviour
             CreateBlueStripPolyline(pathToDraw, 20);
         } else if (stripObject != null)
         {
+            arrowRawImage.enabled = false;
             Destroy(stripObject);
         }
     }
@@ -80,8 +85,24 @@ public class Locations : MonoBehaviour
         if (toTpTo != null)
         {
             Vector3 tpPos = toTpTo.transform.position;
-            player.transform.position = new Vector3(tpPos.x, 44, tpPos.y);
+            CharacterController chari = player.GetComponent<CharacterController>();
+            chari.enabled = false;
+            player.transform.position = new Vector3(tpPos.x, 43.1F, tpPos.z);
+            chari.enabled = true;
         }
+    }
+
+    public float GetArrowRot()
+    {
+        if (currentPath != null && currentPath.Count > 0) {
+            GameObject player = GameObject.Find("pla");
+            Vector3 playerLook = Quaternion.AngleAxis(player.transform.eulerAngles.y, Vector3.up) * new Vector3(0, 0, -1);
+            Vector3 deltaDir = player.transform.position - currentPath[0].transform.position;
+            float lookAngle = Mathf.Atan2(playerLook.x, playerLook.z), deltaAngle = Mathf.Atan2(deltaDir.x, deltaDir.z);
+            return (deltaAngle - lookAngle) * Mathf.Rad2Deg;
+        }
+
+        return 0F;
     }
 
     public void CreatePath(string src, string dst)
@@ -100,7 +121,6 @@ public class Locations : MonoBehaviour
                     startNode = g;
                     dist = newDist;
                 }
-                Debug.Log(newDist + ", " + g);
             }
         }
         GameObject endNode = GameObject.Find(dst);
@@ -136,6 +156,8 @@ public class Locations : MonoBehaviour
             Gizmos.DrawSphere(edge.g2.transform.position + new Vector3(0, 10, 0), 5);
         }
     }
+
+    // Auto genned functions below
 
     private void BuildAdjacency() {
         adjacency = new Dictionary<GameObject, List<(GameObject node, float distance)>>();
