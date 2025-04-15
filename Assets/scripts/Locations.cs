@@ -173,15 +173,21 @@ public class Locations : MonoBehaviour
 
             float dist = Vector3.Distance(g1.transform.position, g2.transform.position);
 
+            // add to adj list 1
             if (!adjacency.ContainsKey(g1)) {
                 adjacency[g1] = new List<(GameObject, float)>();
             }
-            adjacency[g1].Add((g2, dist));
+            if (!adjacency[g1].Contains((g2, dist))) {
+                adjacency[g1].Add((g2, dist));
+            }
 
+            // add to adj list 2
             if (!adjacency.ContainsKey(g2)) {
                 adjacency[g2] = new List<(GameObject, float)>();
             }
-            adjacency[g2].Add((g1, dist));
+            if (!adjacency[g2].Contains((g1, dist))) {
+                adjacency[g2].Add((g1, dist));
+            }
         }
     }
     
