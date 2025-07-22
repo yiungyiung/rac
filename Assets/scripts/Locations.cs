@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class Locations : MonoBehaviour
 {
-    public class Edge {
+    public class Edge
+    {
         public GameObject g1, g2;
 
-        public Edge(string g1Name, string g2Name) {
+        public Edge(string g1Name, string g2Name)
+        {
             this.g1 = GameObject.Find(g1Name);
             this.g2 = GameObject.Find(g2Name);
         }
@@ -71,7 +73,8 @@ public class Locations : MonoBehaviour
             List<GameObject> pathToDraw = new List<GameObject>(currentPath);
             pathToDraw.Insert(0, player);
             CreateBlueStripPolyline(pathToDraw, 20);
-        } else if (stripObject != null)
+        }
+        else if (stripObject != null)
         {
             arrowRawImage.enabled = false;
             Destroy(stripObject);
@@ -94,7 +97,8 @@ public class Locations : MonoBehaviour
 
     public float GetArrowRot()
     {
-        if (currentPath != null && currentPath.Count > 0) {
+        if (currentPath != null && currentPath.Count > 0)
+        {
             GameObject player = GameObject.Find("pla");
             Vector3 playerLook = Quaternion.AngleAxis(player.transform.eulerAngles.y, Vector3.up) * new Vector3(0, 0, -1);
             Vector3 deltaDir = player.transform.position - currentPath[0].transform.position;
@@ -117,7 +121,8 @@ public class Locations : MonoBehaviour
             foreach (GameObject g in navigationNodes)
             {
                 float newDist = Vector3.Distance(g.transform.position, player.transform.position);
-                if (newDist < dist) {
+                if (newDist < dist)
+                {
                     startNode = g;
                     dist = newDist;
                 }
@@ -140,13 +145,58 @@ public class Locations : MonoBehaviour
         connectedNodes.Add(new Edge("GirlsCommonRoom", "EWingDirector1"));
         connectedNodes.Add(new Edge("EWingDirector1", "EWingBalcony"));
         connectedNodes.Add(new Edge("EWingDirector1", "PoolTable"));
+        connectedNodes.Add(new Edge("OSTL", "A402"));
+        connectedNodes.Add(new Edge("A403", "A402"));
+        connectedNodes.Add(new Edge("A403", "A_wing_elevator"));
+        connectedNodes.Add(new Edge("HOD Office", "A_wing_elevator"));
+        connectedNodes.Add(new Edge("Seminar Hall", "A_wing_elevator"));
+        connectedNodes.Add(new Edge("Seminar Hall", "Faculty_Room1"));
+        connectedNodes.Add(new Edge("Faculty_Room2", "Faculty_Room1"));
+        connectedNodes.Add(new Edge("Faculty_Room2", "A_B_wing"));
+        connectedNodes.Add(new Edge("A_B_wing", "Ladies_Toilet"));
+        connectedNodes.Add(new Edge("Gents_Toilet", "Ladies_Toilet"));
+        connectedNodes.Add(new Edge("Store room", "Ladies_Toilet"));
+        connectedNodes.Add(new Edge("A_B_wing", "Server room"));
+        connectedNodes.Add(new Edge("Applied_AI_lab", "Server room"));
+        connectedNodes.Add(new Edge("Applied_AI_lab", "CNS_Lab"));
+        connectedNodes.Add(new Edge("DMA_Lab", "CNS_Lab"));
+        connectedNodes.Add(new Edge("DMA_Lab", "WMT_Lab"));
+        connectedNodes.Add(new Edge("WMT_Lab", "SoftwareEng_Lab"));
+        connectedNodes.Add(new Edge("SoftwareEng_Lab", "CloudComp_Lab"));
+        connectedNodes.Add(new Edge("CloudComp_Lab", "FacultyRoom3"));
+        connectedNodes.Add(new Edge("DS_Lab", "FacultyRoom3"));
+        connectedNodes.Add(new Edge("DS_Lab", "Project_Lab"));
+        connectedNodes.Add(new Edge("C407", "Project_Lab"));
+        connectedNodes.Add(new Edge("C407", "C_wing_elevator"));
+        connectedNodes.Add(new Edge("C_wing_elevator", "TUT_Room_C-1"));
+        connectedNodes.Add(new Edge("Faculty_Room3", "TUT_Room_C-1"));
+        connectedNodes.Add(new Edge("Faculty_Room3", "Faculty_Room4"));
+        connectedNodes.Add(new Edge("Faculty_Room4", "Faculty_Room5"));
+        connectedNodes.Add(new Edge("Faculty_Room5", "CWingDirector1"));
+        connectedNodes.Add(new Edge("Ladies_Toilet_CWing", "CWingDirector1"));
+        connectedNodes.Add(new Edge("Ladies_Toilet_CWing", "Gents_Toilet_CWing"));
+        connectedNodes.Add(new Edge("CWingDirector1", "Store_Room"));
+        connectedNodes.Add(new Edge("Faculty_Room6", "Store_Room"));
+        connectedNodes.Add(new Edge("Faculty_Room6", "TUT_Room_D-3"));
+        connectedNodes.Add(new Edge("TUT_Room_D-2", "TUT_Room_D-3"));
+        connectedNodes.Add(new Edge("TUT_Room_D-2", "D-405"));
+        connectedNodes.Add(new Edge("D-405", "Computer_Center_1"));
+        connectedNodes.Add(new Edge("Computer_Center_1", "Computer_Center_2"));
+        connectedNodes.Add(new Edge("D-406", "Computer_Center_2"));
+        connectedNodes.Add(new Edge("D-406", "D_wing_elevator_turn"));
+        connectedNodes.Add(new Edge("D_wing_elevator_turn", "D_wing_elevator"));
+        connectedNodes.Add(new Edge("D_wing_elevator_turn", "PoolTable"));
+
+
     }
 
-    private void OnDrawGizmos() {
-        foreach(Edge edge in connectedNodes) {
+    private void OnDrawGizmos()
+    {
+        foreach (Edge edge in connectedNodes)
+        {
             Gizmos.color = Color.red;
             Gizmos.DrawLine(
-                edge.g1.transform.position + new Vector3(0, 10, 0), 
+                edge.g1.transform.position + new Vector3(0, 10, 0),
                 edge.g2.transform.position + new Vector3(0, 10, 0)
             );
 
@@ -159,14 +209,17 @@ public class Locations : MonoBehaviour
 
     // Auto genned functions below
 
-    private void BuildAdjacency() {
+    private void BuildAdjacency()
+    {
         adjacency = new Dictionary<GameObject, List<(GameObject node, float distance)>>();
 
-        foreach (Edge edge in connectedNodes) {
+        foreach (Edge edge in connectedNodes)
+        {
             GameObject g1 = edge.g1;
             GameObject g2 = edge.g2;
 
-            if (g1 == null || g2 == null) {
+            if (g1 == null || g2 == null)
+            {
                 Debug.LogWarning("Edge has null GameObject(s). Skipping.");
                 continue;
             }
@@ -174,30 +227,37 @@ public class Locations : MonoBehaviour
             float dist = Vector3.Distance(g1.transform.position, g2.transform.position);
 
             // add to adj list 1
-            if (!adjacency.ContainsKey(g1)) {
+            if (!adjacency.ContainsKey(g1))
+            {
                 adjacency[g1] = new List<(GameObject, float)>();
             }
-            if (!adjacency[g1].Contains((g2, dist))) {
+            if (!adjacency[g1].Contains((g2, dist)))
+            {
                 adjacency[g1].Add((g2, dist));
             }
 
             // add to adj list 2
-            if (!adjacency.ContainsKey(g2)) {
+            if (!adjacency.ContainsKey(g2))
+            {
                 adjacency[g2] = new List<(GameObject, float)>();
             }
-            if (!adjacency[g2].Contains((g1, dist))) {
+            if (!adjacency[g2].Contains((g1, dist)))
+            {
                 adjacency[g2].Add((g1, dist));
             }
         }
     }
-    
-    public List<GameObject> FindShortestPath(GameObject start, GameObject end) {
-        if (adjacency == null) {
+
+    public List<GameObject> FindShortestPath(GameObject start, GameObject end)
+    {
+        if (adjacency == null)
+        {
             Debug.LogError("Adjacency list not built. Call BuildAdjacency first.");
             return null;
         }
 
-        if (!adjacency.ContainsKey(start) || !adjacency.ContainsKey(end)) {
+        if (!adjacency.ContainsKey(start) || !adjacency.ContainsKey(end))
+        {
             Debug.LogError("Start or end node not present in the graph.");
             return null;
         }
@@ -206,7 +266,8 @@ public class Locations : MonoBehaviour
         Dictionary<GameObject, GameObject> previous = new Dictionary<GameObject, GameObject>();
         List<GameObject> nodes = new List<GameObject>(adjacency.Keys);
 
-        foreach (GameObject node in nodes) {
+        foreach (GameObject node in nodes)
+        {
             distances[node] = Mathf.Infinity;
             previous[node] = null;
         }
@@ -214,7 +275,8 @@ public class Locations : MonoBehaviour
 
         List<GameObject> queue = new List<GameObject>(nodes);
 
-        while (queue.Count > 0) {
+        while (queue.Count > 0)
+        {
             queue.Sort((a, b) => distances[a].CompareTo(distances[b]));
             GameObject current = queue[0];
             queue.RemoveAt(0);
@@ -223,11 +285,13 @@ public class Locations : MonoBehaviour
 
             if (distances[current] == Mathf.Infinity) break;
 
-            foreach (var neighborPair in adjacency[current]) {
+            foreach (var neighborPair in adjacency[current])
+            {
                 GameObject neighbor = neighborPair.node;
                 float alt = distances[current] + neighborPair.distance;
 
-                if (alt < distances[neighbor]) {
+                if (alt < distances[neighbor])
+                {
                     distances[neighbor] = alt;
                     previous[neighbor] = current;
                 }
@@ -237,14 +301,16 @@ public class Locations : MonoBehaviour
         List<GameObject> path = new List<GameObject>();
         GameObject temp = end;
 
-        while (temp != null) {
+        while (temp != null)
+        {
             path.Add(temp);
             temp = previous[temp];
         }
 
         path.Reverse();
 
-        if (path.Count == 0 || path[0] != start) {
+        if (path.Count == 0 || path[0] != start)
+        {
             return null;
         }
 
