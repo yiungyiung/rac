@@ -23,7 +23,8 @@ public class Locations : MonoBehaviour
 
     private Dictionary<GameObject, List<(GameObject node, float distance)>> adjacency;
     private GameObject stripObject;
-
+    [TextArea(10, 20)]
+    public string connectionsData;
     private void Start()
     {
         GameObject[] locations = GameObject.FindGameObjectsWithTag("Navigate");
@@ -32,7 +33,7 @@ public class Locations : MonoBehaviour
         navigationNodes.AddRange(GameObject.FindGameObjectsWithTag("NavigateOnly"));
         stripObject = new GameObject("BlueStripPolyline");
 
-        AddEdges();
+        ParseConnectionsFromString();
         BuildAdjacency();
     }
 
@@ -138,56 +139,29 @@ public class Locations : MonoBehaviour
         }
     }
 
-    private void AddEdges()
+    private void ParseConnectionsFromString()
     {
-        connectedNodes.Add(new Edge("OSTL", "PPSL"));
-        connectedNodes.Add(new Edge("PPSL", "GirlsCommonRoom"));
-        connectedNodes.Add(new Edge("GirlsCommonRoom", "EWingDirector1"));
-        connectedNodes.Add(new Edge("EWingDirector1", "EWingBalcony"));
-        connectedNodes.Add(new Edge("EWingDirector1", "PoolTable"));
-        connectedNodes.Add(new Edge("OSTL", "A402"));
-        connectedNodes.Add(new Edge("A403", "A402"));
-        connectedNodes.Add(new Edge("A403", "A_wing_elevator"));
-        connectedNodes.Add(new Edge("HOD Office", "A_wing_elevator"));
-        connectedNodes.Add(new Edge("Seminar Hall", "A_wing_elevator"));
-        connectedNodes.Add(new Edge("Seminar Hall", "Faculty_Room1"));
-        connectedNodes.Add(new Edge("Faculty_Room2", "Faculty_Room1"));
-        connectedNodes.Add(new Edge("Faculty_Room2", "A_B_wing"));
-        connectedNodes.Add(new Edge("A_B_wing", "Ladies_Toilet"));
-        connectedNodes.Add(new Edge("Gents_Toilet", "Ladies_Toilet"));
-        connectedNodes.Add(new Edge("Store room", "Ladies_Toilet"));
-        connectedNodes.Add(new Edge("A_B_wing", "Server room"));
-        connectedNodes.Add(new Edge("Applied_AI_lab", "Server room"));
-        connectedNodes.Add(new Edge("Applied_AI_lab", "CNS_Lab"));
-        connectedNodes.Add(new Edge("DMA_Lab", "CNS_Lab"));
-        connectedNodes.Add(new Edge("DMA_Lab", "WMT_Lab"));
-        connectedNodes.Add(new Edge("WMT_Lab", "SoftwareEng_Lab"));
-        connectedNodes.Add(new Edge("SoftwareEng_Lab", "CloudComp_Lab"));
-        connectedNodes.Add(new Edge("CloudComp_Lab", "FacultyRoom3"));
-        connectedNodes.Add(new Edge("DS_Lab", "FacultyRoom3"));
-        connectedNodes.Add(new Edge("DS_Lab", "Project_Lab"));
-        connectedNodes.Add(new Edge("C407", "Project_Lab"));
-        connectedNodes.Add(new Edge("C407", "C_wing_elevator"));
-        connectedNodes.Add(new Edge("C_wing_elevator", "TUT_Room_C-1"));
-        connectedNodes.Add(new Edge("Faculty_Room3", "TUT_Room_C-1"));
-        connectedNodes.Add(new Edge("Faculty_Room3", "Faculty_Room4"));
-        connectedNodes.Add(new Edge("Faculty_Room4", "Faculty_Room5"));
-        connectedNodes.Add(new Edge("Faculty_Room5", "CWingDirector1"));
-        connectedNodes.Add(new Edge("Ladies_Toilet_CWing", "CWingDirector1"));
-        connectedNodes.Add(new Edge("Ladies_Toilet_CWing", "Gents_Toilet_CWing"));
-        connectedNodes.Add(new Edge("CWingDirector1", "Store_Room"));
-        connectedNodes.Add(new Edge("Faculty_Room6", "Store_Room"));
-        connectedNodes.Add(new Edge("Faculty_Room6", "TUT_Room_D-3"));
-        connectedNodes.Add(new Edge("TUT_Room_D-2", "TUT_Room_D-3"));
-        connectedNodes.Add(new Edge("TUT_Room_D-2", "D-405"));
-        connectedNodes.Add(new Edge("D-405", "Computer_Center_1"));
-        connectedNodes.Add(new Edge("Computer_Center_1", "Computer_Center_2"));
-        connectedNodes.Add(new Edge("D-406", "Computer_Center_2"));
-        connectedNodes.Add(new Edge("D-406", "D_wing_elevator_turn"));
-        connectedNodes.Add(new Edge("D_wing_elevator_turn", "D_wing_elevator"));
-        connectedNodes.Add(new Edge("D_wing_elevator_turn", "PoolTable"));
+        if (string.IsNullOrEmpty(connectionsData))
+        {
+            Debug.LogWarning("Connections data string is empty!");
+            return;
+        }
 
+        string[] connections = connectionsData.Split(';');
+        foreach (string connection in connections)
+        {
+            string[] nodes = connection.Split(',');
+            if (nodes.Length == 2)
+            {
+                string node1 = nodes[0].Trim();
+                string node2 = nodes[1].Trim();
 
+                if (!string.IsNullOrEmpty(node1) && !string.IsNullOrEmpty(node2))
+                {
+                    connectedNodes.Add(new Edge(node1, node2));
+                }
+            }
+        }
     }
 
     private void OnDrawGizmos()
