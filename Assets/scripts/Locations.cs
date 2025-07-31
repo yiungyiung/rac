@@ -12,7 +12,16 @@ public class Locations : MonoBehaviour
         public Edge(string g1Name, string g2Name)
         {
             this.g1 = GameObject.Find(g1Name);
+            if (this.g1 == null)
+            {
+                Debug.LogError($"Edge Error: GameObject '{g1Name}' wasn't found.");
+            }
+            
             this.g2 = GameObject.Find(g2Name);
+            if (this.g2 == null)
+            {
+                Debug.LogError($"Edge Error: GameObject '{g2Name}' wasn't found.");
+            }
         }
     }
 
@@ -35,6 +44,16 @@ public class Locations : MonoBehaviour
 
         ParseConnectionsFromString();
         BuildAdjacency();
+       
+        foreach (GameObject node in navigationNodes)
+        {
+            if (node == null) continue;
+            
+            if (!adjacency.ContainsKey(node) || adjacency[node].Count == 0)
+            {
+                Debug.LogError($"Node Error: GameObject '{node.name}' has no connections.");
+            }
+        }
     }
 
     private void Update()
@@ -166,18 +185,31 @@ public class Locations : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        foreach (GameObject node in navigationNodes)
+        {
+            if (node == null) continue;
+            
+            if (adjacency.ContainsKey(node) && adjacency[node].Count > 0)
+            {
+                Gizmos.color = node.tag == "Navigate" ? Color.yellow : Color.green;
+            }
+            else
+            {
+                Gizmos.color = Color.red;
+            }
+            Gizmos.DrawSphere(node.transform.position + new Vector3(0, 10, 0), 5);
+        }
+
+        Gizmos.color = Color.red;
         foreach (Edge edge in connectedNodes)
         {
-            Gizmos.color = Color.red;
-            Gizmos.DrawLine(
-                edge.g1.transform.position + new Vector3(0, 10, 0),
-                edge.g2.transform.position + new Vector3(0, 10, 0)
-            );
-
-            Gizmos.color = edge.g1.tag == "Navigate" ? Color.yellow : Color.green;
-            Gizmos.DrawSphere(edge.g1.transform.position + new Vector3(0, 10, 0), 5);
-            Gizmos.color = edge.g2.tag == "Navigate" ? Color.yellow : Color.green;
-            Gizmos.DrawSphere(edge.g2.transform.position + new Vector3(0, 10, 0), 5);
+            if (edge.g1 != null && edge.g2 != null)
+            {
+                Gizmos.DrawLine(
+                    edge.g1.transform.position + new Vector3(0, 10, 0),
+                    edge.g2.transform.position + new Vector3(0, 10, 0)
+                );
+            }
         }
     }
 
