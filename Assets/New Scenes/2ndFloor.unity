@@ -399,7 +399,7 @@ Transform:
   m_GameObject: {fileID: 598597}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 2187.1, y: 21.2, z: 226.7}
+  m_LocalPosition: {x: 2184.1, y: 21.2, z: 221.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26970,6 +26970,37 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &123473526
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 123473527}
+  m_Layer: 0
+  m_Name: Laboratory6
+  m_TagString: Navigate
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &123473527
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123473526}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
+  m_LocalPosition: {x: 45.2, y: 1045, z: -1077.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 653744251}
+  m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
 --- !u!1 &124551448
 GameObject:
   m_ObjectHideFlags: 0
@@ -33045,7 +33076,7 @@ Transform:
   m_GameObject: {fileID: 152546663}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 1807.8, y: 1042.97, z: -820.3}
+  m_LocalPosition: {x: 1796.2, y: 1042.97, z: -813.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41806,37 +41837,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!1 &206483688
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 206483689}
-  m_Layer: 0
-  m_Name: Faculty_Room5
-  m_TagString: Navigate
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &206483689
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 206483688}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 174.80005, y: 1050.9, z: -1487.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 839803281}
-  m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
 --- !u!1 &206499852
 GameObject:
   m_ObjectHideFlags: 0
@@ -53024,37 +53024,6 @@ Transform:
   - {fileID: 819683289}
   m_Father: {fileID: 1968440072}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &289696087
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 289696088}
-  m_Layer: 0
-  m_Name: D-405
-  m_TagString: Navigate
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &289696088
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 289696087}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 49, y: 1045, z: -844}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 653744251}
-  m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
 --- !u!1 &290268783
 GameObject:
   m_ObjectHideFlags: 0
@@ -54897,7 +54866,7 @@ GameObject:
   m_Component:
   - component: {fileID: 297025946}
   m_Layer: 0
-  m_Name: Faculty_Room6
+  m_Name: Laboratory7
   m_TagString: Navigate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54912,7 +54881,7 @@ Transform:
   m_GameObject: {fileID: 297025945}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 51, y: 1045, z: -1052}
+  m_LocalPosition: {x: 47.2, y: 1045, z: -1052}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -100052,37 +100021,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &504087493
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 504087494}
-  m_Layer: 0
-  m_Name: D-406
-  m_TagString: Navigate
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &504087494
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504087493}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 50.1, y: 1045, z: -285.1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 653744251}
-  m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
 --- !u!1 &504689244
 GameObject:
   m_ObjectHideFlags: 0
@@ -133353,15 +133291,13 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 99321651}
+  - {fileID: 123473527}
   - {fileID: 297025946}
   - {fileID: 1365357980}
   - {fileID: 2113652886}
   - {fileID: 750194563}
-  - {fileID: 504087494}
   - {fileID: 131427446}
   - {fileID: 1751592799}
-  - {fileID: 289696088}
-  - {fileID: 780593203}
   m_Father: {fileID: 1254404918}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &653877374
@@ -135997,7 +135933,7 @@ Transform:
   m_GameObject: {fileID: 675466754}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 1780.1, y: 1038, z: -783}
+  m_LocalPosition: {x: 1804.8, y: 1038, z: -797.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -149285,7 +149221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 750194563}
   m_Layer: 0
-  m_Name: Computer_Center_2
+  m_Name: Laboratory5
   m_TagString: Navigate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149300,7 +149236,7 @@ Transform:
   m_GameObject: {fileID: 750194562}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 48.3, y: 1045, z: -386}
+  m_LocalPosition: {x: 48.3, y: 1045, z: -316.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -156099,6 +156035,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778876816}
   m_Mesh: {fileID: 4493585093827132993, guid: ddec7f54b3fb4f1448cb41373cc5fcd5, type: 3}
+--- !u!1 &778897496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 778897497}
+  m_Layer: 0
+  m_Name: MES_Didactic_Lab
+  m_TagString: Navigate
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &778897497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778897496}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
+  m_LocalPosition: {x: 1138.3, y: 1045.6, z: -1490.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 839803281}
+  m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
 --- !u!1 &780181850
 GameObject:
   m_ObjectHideFlags: 0
@@ -156457,37 +156424,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &780593202
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 780593203}
-  m_Layer: 0
-  m_Name: TUT_Room_D-2
-  m_TagString: Navigate
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &780593203
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780593202}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 50, y: 1049.4, z: -905}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 653744251}
-  m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
 --- !u!1 &780792154
 GameObject:
   m_ObjectHideFlags: 0
@@ -162307,13 +162243,14 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1374509164}
-  - {fileID: 1254671657}
   - {fileID: 1089040497}
+  - {fileID: 1630041528}
+  - {fileID: 778897497}
+  - {fileID: 1254671657}
   - {fileID: 1071352678}
   - {fileID: 1189853857}
   - {fileID: 1725800132}
   - {fileID: 1099422032}
-  - {fileID: 206483689}
   - {fileID: 275127831}
   - {fileID: 1240318479}
   - {fileID: 2053565523}
@@ -215870,7 +215807,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1071352678}
   m_Layer: 0
-  m_Name: TUT_Room_C-1
+  m_Name: Virtual_Reality_Lab
   m_TagString: Navigate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215885,7 +215822,7 @@ Transform:
   m_GameObject: {fileID: 1071352677}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 505.30005, y: 1040.6, z: -1483.7999}
+  m_LocalPosition: {x: 544.8, y: 1040.6, z: -1487.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -223392,7 +223329,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1089040497}
   m_Layer: 0
-  m_Name: Project_Lab
+  m_Name: Computer_Lab2
   m_TagString: Navigate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -223407,7 +223344,7 @@ Transform:
   m_GameObject: {fileID: 1089040496}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 1214.6, y: 1045.6, z: -1494.9}
+  m_LocalPosition: {x: 1217.7, y: 1045.6, z: -1489.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -225713,7 +225650,7 @@ Transform:
   m_GameObject: {fileID: 1099422031}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 321.80005, y: 1050.9, z: -1486.6}
+  m_LocalPosition: {x: 350.5, y: 1050.9, z: -1492.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -238162,7 +238099,7 @@ Transform:
   m_GameObject: {fileID: 1189853856}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 541.10004, y: 1046.4, z: -1483}
+  m_LocalPosition: {x: 537, y: 1046.4, z: -1490.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -258109,23 +258046,25 @@ MonoBehaviour:
 
     Instrumentation_Lab,B_C_Directional;
 
-    B_C_Directional,DS_Lab;
+    B_C_Directional,B_C_Wing2;
 
-    DS_Lab,Project_Lab;
+    B_C_Wing2,Computer_Lab2;
 
-    C407,Project_Lab;
+    IIOT_AMR_Lab,Computer_Lab2;
 
-    C407,C_wing_elevator;
+    IIOT_AMR_Lab,MES_Didactic_Lab;
 
-    C_wing_elevator,TUT_Room_C-1;
+    MES_Didactic_Lab,Design_Simulation_Lab;
 
-    Faculty_Room3,TUT_Room_C-1;
+    Design_Simulation_Lab,Virtual_Reality_Lab;
+
+    Virtual_Reality_Lab,C_wing_elevator;
+
+    C_wing_elevator,Faculty_Room3;
 
     Faculty_Room3,Faculty_Room4;
 
-    Faculty_Room4,Faculty_Room5;
-
-    Faculty_Room5,CWingDirector1;
+    Faculty_Room4,CWingDirector1;
 
     Ladies_Toilet_CWing,CWingDirector1;
 
@@ -258133,21 +258072,17 @@ MonoBehaviour:
 
     CWingDirector1,Store_Room;
 
-    Faculty_Room6,Store_Room;
+    Laboratory6,Store_Room;
 
-    Faculty_Room6,TUT_Room_D-3;
+    Laboratory6,Laboratory7;
 
-    TUT_Room_D-2,TUT_Room_D-3;
+    Laboratory7,Teaching_Lab;
 
-    TUT_Room_D-2,D-405;
+    Teaching_Lab,Laboratory8;
 
-    D-405,Computer_Center_1;
+    Laboratory8,Laboratory5;
 
-    Computer_Center_1,Computer_Center_2;
-
-    D-406,Computer_Center_2;
-
-    D-406,D_wing_elevator_turn;
+    Laboratory5,D_wing_elevator_turn;
 
     D_wing_elevator_turn,D_wing_elevator;
 
@@ -258181,7 +258116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1254671657}
   m_Layer: 0
-  m_Name: C407
+  m_Name: Design_Simulation_Lab
   m_TagString: Navigate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -258196,7 +258131,7 @@ Transform:
   m_GameObject: {fileID: 1254671656}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 809.80005, y: 1042.3, z: -1484.6}
+  m_LocalPosition: {x: 823.2, y: 1042.3, z: -1487.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -277134,7 +277069,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1365357980}
   m_Layer: 0
-  m_Name: TUT_Room_D-3
+  m_Name: Teaching_Lab
   m_TagString: Navigate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -317547,6 +317482,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3beeaac9a992cc4469ebd7e929f6324d, type: 3}
   m_PrefabInstance: {fileID: 1628702313}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1630041527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1630041528}
+  m_Layer: 0
+  m_Name: IIOT_AMR_Lab
+  m_TagString: Navigate
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1630041528
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630041527}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
+  m_LocalPosition: {x: 1202.7, y: 1045.6, z: -1491.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 839803281}
+  m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
 --- !u!1 &1633467410
 GameObject:
   m_ObjectHideFlags: 0
@@ -332658,7 +332624,7 @@ Transform:
   m_GameObject: {fileID: 1725800131}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 434.80005, y: 1050.9, z: -1485.6}
+  m_LocalPosition: {x: 416.6, y: 1050.9, z: -1488.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -366798,7 +366764,7 @@ Transform:
   m_GameObject: {fileID: 1882879828}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 1573, y: 10.7, z: 546.1}
+  m_LocalPosition: {x: 1583.9, y: 10.7, z: 565}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -412427,7 +412393,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2113652886}
   m_Layer: 0
-  m_Name: Computer_Center_1
+  m_Name: Laboratory8
   m_TagString: Navigate
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -412442,8 +412408,8 @@ Transform:
   m_GameObject: {fileID: 2113652885}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.2588191, z: -0, w: 0.9659258}
-  m_LocalPosition: {x: 51.6, y: 1045, z: -732.9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 51.6, y: 1045, z: -807.6}
+  m_LocalScale: {x: 1.1326, y: 1.1326, z: 1.3584403}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 653744251}
